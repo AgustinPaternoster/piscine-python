@@ -1,6 +1,6 @@
 Exercise 00: Hello, World!
 Instructions
-You need to modify the string of each data object to display the following greetings: "Hello World", "Hello «country of your campus»", "Hello «city of your campus»", "Hello «name of your campus»"
+You need to modify the string of each data object to display the following greetings: "Hello World", "Hello «country of your campus»", "Hello «city of your campus»", "Hello «name of your campus»"cd 
 
 ft_list = ["Hello", "tata!"]
 ft_tuple = ("Hello", "toto!")
