@@ -1,0 +1,8 @@
+services:
+  python:
+    build: .
+    container_name: python-piscine
+    volumes:
+      - .:/workspace
+    # Overrides default command so things don't shut down after the process ends.
+    command: sleep infinity
