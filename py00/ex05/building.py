@@ -40,7 +40,7 @@ def main(argv: list) -> int:
 
     try:
         assert len(argv) <= 2, (
-            "Too many arguments! Usage: python building.py \"arg\" (optional)."
+            "Too many arguments! Usage: python building.py"
         )
 
         if len(argv) == 1 or argv[1] is None:
