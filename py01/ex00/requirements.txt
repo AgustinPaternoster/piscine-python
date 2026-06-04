@@ -1,3 +1,2 @@
-tqdm
 numpy==2.1.2
 pytest==8.3.3
