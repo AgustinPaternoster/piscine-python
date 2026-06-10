@@ -1,23 +1,17 @@
-from PIL import Image
+from PIL import Image, UnidentifiedImageError
 import numpy as np
 
 
-def ft_load(path: str) -> np.array:
-    """
-    Loads an image and returns it as a numpy array
-
-    Parameters:
-    path (string): the path of the image to be rotated.
-
-    Return value:
-    np.array: the 2D numpy array representation of the image.
-    """
+def ft_load(path:str) -> np.ndarray:
     try:
-        with Image.open(path) as image:
-            image_array = np.array(image)
-            print(f'The shape of the image is: {image_array.shape}')
-            return image_array
-
+        with Image.open(path) as img:
+            img_rgb = img.convert('RGB')
+            vector = np.array(img)
+        print(f'The shape of the image is: {vector.shape}')
+        return vector
+    except FileNotFoundError as e:
+        print(f'Error: The file {path} was not found')
+    except UnidentifiedImageError as e:
+        print(f'Error: The file {path} is not a valid imagen')
     except Exception as e:
-        exit(f'Exception: {e}')
-    return None
+        print(f'Error: {e}')
