@@ -6,7 +6,6 @@
 | ------------ | --------- |
 |File to turn in | `load_image.py` `zoom.py` |
 | Allowed functions | all libs for loading, manipulating, displaying image and table manipulation |
-
 ## Instructions
 
 Create a program that loads the image "animal.jpeg", prints its information and displays it after applying a zoom.

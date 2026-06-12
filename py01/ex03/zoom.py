@@ -1,51 +1,34 @@
+from load_image import ft_load
 import numpy as np
 import matplotlib.pyplot as plt
+import sys
 
-from load_image import ft_load
-
-
-def rgb2gray(rgb) -> np.array:
-    """
-    Turns a RGB image to Grayscale
-
-    Parameters:
-    rgb (np.array): the 2D numpy array representation of the image.
-
-    Return value:
-    np.array: the 2D numpy array representation of the grayscale image.
-    """
-    return np.dot(rgb[..., :3], [0.2989, 0.5870, 0.1440])
-
-
-def ft_zoom(path: str):
-    """
-    Zooms on an image.
-
-    Parameters:
-    path (string): the path of the image to be rotated.
-
-    Return value:
-    np.array: The zoomed image as a 2D numpy array
-    """
+def main():
     try:
-        img = ft_load(path)
+        img = ft_load("animal.jpeg")
+        if img is None:
+            return
         print(img)
-
-        img = rgb2gray(img)  # converting image to grescale
-
-        h, w = img.shape  # unpacking image height and width
-        zh, zw = 400, 400  # setting image final size
-        eh = round((h - zh) // 2)
-        ew = round((w - zw) // 2)  # computing margins
-
-        # slicing numpy array to apply 'zoom'
-        img_out = img[eh:eh + zh, ew:ew + zw]
-
-        print(f"New shape after slicing: {img_out.shape}")
-        print(img_out)
-
-        plt.imshow(img_out, cmap=plt.get_cmap('gray'))
+        img = np.dot(img[...,:3], [0.2989, 0.5870, 0.1140])
+        h, w = img.shape
+        zh , zw = 400, 400
+        x = round((h - zh) / 2)
+        y = round((w - zw )/ 2)
+        zimg = img[x:(x + zh),y:(y + zw)].astype(np.uint8)
+        print(f'New shape after slicing: {zimg.shape} or ({zw}, {zh})')
+        print(zimg)
+        
+        plt.imshow(zimg, cmap='gray')
+        plt.title("Zoomed Grayscale")
         plt.show()
-
+        # problema con el entorno grafico , revisar en el equipo 42.
+    except KeyboardInterrupt:
+        print("\nExecution interrupted by the user.")
+        sys.exit(1)
     except Exception as e:
-        exit(f'Exception: {e}')
+        print(e)
+        sys.exit(1)
+        
+
+if __name__ == "__main__":
+    main()
