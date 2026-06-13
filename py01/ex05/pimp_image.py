@@ -1,104 +1,37 @@
-import numpy as np
-import matplotlib.pyplot as plt
+import numpy as  np
+
+lista = [[[1,1,1],[2,2,2]],
+         [[3,3,3],[4,4,4]]]
+
+img = [[[120, 45, 200],[89, 210, 34]],
+        [[15, 230, 89], [112, 45, 167]]
+    ]
 
 
-def ft_invert(image: np.array) -> np.array:
-    """ft_invert takes an array representation of an image to apply an
-inversion filter"""
-    pass
-    try:
-        # First condition requiered for PNG format
-        if len(image.shape) == 3 and image.shape[2] == 4:
-            r, g, b, a = np.split(image, 4, axis=2)
-            rgb_image = np.concatenate((r, g, b), axis=2)
-            negative_rgb = 255 - rgb_image
-            # Reintegrate alpha channel to keep size identical to source file
-            negative_img = np.concatenate((negative_rgb, a), axis=2)
-
-        else:
-            negative_img = 255 - image
-
-        plt.imshow(negative_img)
-        plt.title('Negative Image')
-        plt.show()
-
-    except Exception as e:
-        exit(f'Exception as {e}')
-
-    return negative_img
+img_inverted = [
+        # Fila 0
+        [
+            [135, 210, 55],  # Píxel (0,0) - [255-120, 255-45, 255-200]
+            [166, 45, 221]   # Píxel (0,1) - [255-89, 255-210, 255-34]
+        ],
+        # Fila 1
+        [
+            [240, 25, 166],  # Píxel (1,0) - [255-15, 255-230, 255-89]
+            [143, 210, 88]   # Píxel (1,1) - [255-112, 255-45, 255-167]
+        ]
+    ]
 
 
-def ft_red(image: np.array) -> np.array:
-    """ft_red takes an array representation of an image to apply a
-red filter"""
 
-    try:
-        # set blue and green chanels to 0 (1 = G, 2 = B)
-        red_img = image.copy()
-        red_img[:, :, 1] = 0
-        red_img[:, :, 2] = 0
+# invert
+tmp = np.array(img) - 255
 
-        plt.imshow(red_img)
-        plt.title('Red Image')
-        plt.show()
+redFilter = [1,0,0]
 
-    except Exception as e:
-        exit(f'Exception: {e}')
+# filtro red
+tmpRed = np.array(img) * np.array(redFilter)
+print(tmpRed)
 
-    return red_img
-
-
-def ft_green(image: np.array) -> np.array:
-    """ft_green takes an array representation of an image to apply a
-green filter"""
-    try:
-        # set blue and red chanels to 0 (0 = R, 2 = B)
-        green_img = image.copy()
-        green_img[:, :, 0] = 0
-        green_img[:, :, 2] = 0
-
-        plt.imshow(green_img)
-        plt.title('Green Image')
-        plt.show()
-
-    except Exception as e:
-        exit(f'Exception: {e}')
-
-    return green_img
-
-
-def ft_blue(image: np.array) -> np.array:
-    """ft_red takes an array representation of an image to apply a
-blue filter"""
-    try:
-        # set green and red chanels to 0 (0 = R; 1 = G)
-        blue_img = image.copy()
-        blue_img[:, :, 0] = 0
-        blue_img[:, :, 1] = 0
-
-        plt.imshow(blue_img)
-        plt.title('Blue Image')
-        plt.show()
-
-    except Exception as e:
-        exit(f'Exception: {e}')
-
-    return blue_img
-
-
-def ft_grey(image: np.array) -> np.array:
-    """ft_grey takes an array representation of an image to apply a
-red filter"""
-    try:
-        assert len(image.shape) >= 3, 'invalid input image'
-        # Grayscale conversion formula: Y = 0.299*R + 0.587*G + 0.114*B
-        grey_img = np.dot(image[..., :3], [0.2989, 0.5870, 0.1140])
-
-        plt.imshow(grey_img, cmap=plt.get_cmap('gray'))
-        plt.title("Grey Image")
-        plt.show()
-
-    except Exception as e:
-        exit(f'Exception: {e}')
-
-    return grey_img
+# filtro red
+tmpgreen = 
+print("no")
