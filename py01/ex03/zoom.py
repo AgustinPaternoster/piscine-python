@@ -1,7 +1,12 @@
+import sys
+import os
+
+if os.environ.get('XDG_SESSION_TYPE') == 'wayland' and 'QT_QPA_PLATFORM' not in os.environ:
+    os.environ['QT_QPA_PLATFORM'] = 'wayland'
+
 from load_image import ft_load
 import numpy as np
 import matplotlib.pyplot as plt
-import sys
 
 def main():
     try:
@@ -15,7 +20,7 @@ def main():
         x = round((h - zh) / 2)
         y = round((w - zw )/ 2)
         zimg = img[x:(x + zh),y:(y + zw)].astype(np.uint8)
-        print(f'New shape after slicing: {zimg.shape} or ({zw}, {zh})')
+        print(f'New shape after slicing: ({zw}, {zh})')
         print(zimg)
         
         plt.imshow(zimg, cmap='gray')
