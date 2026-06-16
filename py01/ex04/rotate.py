@@ -7,7 +7,7 @@ if os.environ.get('XDG_SESSION_TYPE') == 'wayland' and 'QT_QPA_PLATFORM' not in 
 import numpy as np
 from load_image import ft_load
 import matplotlib.pyplot as plt
-import sys
+
 
 def main():
     try:
