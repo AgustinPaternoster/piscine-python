@@ -1,7 +1,8 @@
 import sys
 import os
 
-if os.environ.get('XDG_SESSION_TYPE') == 'wayland' and 'QT_QPA_PLATFORM' not in os.environ:
+if (os.environ.get('XDG_SESSION_TYPE') == 'wayland'
+        and 'QT_QPA_PLATFORM' not in os.environ):
     os.environ['QT_QPA_PLATFORM'] = 'wayland'
 
 import numpy as np
@@ -10,23 +11,26 @@ import matplotlib.pyplot as plt
 
 
 def main():
+    """
+    Main function to load animal.jpeg, crop a 400x400 section,
+    manually transpose the cropped image, and display it.
+    """
     try:
         img = ft_load('animal.jpeg')
-        img = np.dot(img[...,:3], [0.2989, 0.5870, 0.1140])
+        img = np.dot(img[..., :3], [0.2989, 0.5870, 0.1140])
         h, w = img.shape
-        zh , zw = 400, 400
+        zh, zw = 400, 400
         x = round((h - zh) / 2)
-        y = round((w - zw )/ 2)
-        zimg = img[x:(x + zh),y:(y + zw)].astype(np.uint8)
+        y = round((w - zw) / 2)
+        zimg = img[x:(x + zh), y:(y + zw)].astype(np.uint8)
         print(f'The shape of image is: ({zw}, {zh})')
         print(zimg)
-        traspose_img = np.zeros((zh,zw))
+        traspose_img = np.zeros((zh, zw))
         for h in range(zh):
             for w in range(zw):
                 traspose_img[w][h] = zimg[h][w]
         print(f'New shape after Transpose: {traspose_img.shape}')
         print(traspose_img)
-
 
         plt.imshow(traspose_img, cmap='gray')
         plt.title("Zoomed Grayscale")
@@ -38,7 +42,6 @@ def main():
     except Exception as e:
         print(e)
         sys.exit(1)
-
 
 
 if __name__ == "__main__":

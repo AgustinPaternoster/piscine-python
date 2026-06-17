@@ -1,3 +1,7 @@
+"""
+This module provides functions to apply color filters (invert, red, green,
+blue, grey) to a NumPy array image and display them using matplotlib.
+"""
 import os
 
 if (os.environ.get('XDG_SESSION_TYPE') == 'wayland'
@@ -81,7 +85,7 @@ def ft_blue(image: np.array) -> np.array:
 
 def ft_grey(image: np.array) -> np.array:
     """
-    Converts the image to grayscale 
+    Converts the image to grayscale
     preserving the alpha channel if present.
     """
     try:
