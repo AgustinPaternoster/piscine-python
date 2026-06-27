@@ -1,0 +1,5 @@
+pandas
+numpy
+flake8
+matplotlib
+ipykernel
