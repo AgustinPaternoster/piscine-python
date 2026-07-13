@@ -11,9 +11,12 @@ def outer(x: int | float, function) -> object:
     count = 0
     def inner() -> float:
         """Apply function to the current value of x and return the result."""
-        nonlocal x
-        x = function(x)
-        return x
+        nonlocal count
+        result = x
+        count += 1
+        for i in range(count):
+            result = function(result)
+        return result
     return inner
         
 
