@@ -1,5 +1,30 @@
-.dockerignore
-docker-compose.yml
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+dist/
+build/
+
+# Virtual environments
+venv/
+.venv/
+.vemv/
+.env/
+
+# Docker
 Dockerfile
+docker-compose.yml
+.dockerignore
 main.py
-/.devcontainer
+
+# Dev container / IDE
+.devcontainer/
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
